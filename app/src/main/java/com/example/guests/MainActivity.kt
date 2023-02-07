@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.appBarMain.toolbar)
 
-        binding.appBarMain.fab.setOnClickListener { 
+        binding.appBarMain.fab.setOnClickListener {
             startActivity(Intent(this, GuestFormActivity::class.java))
         }
 
@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
 
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow
+                R.id.nav_all_guests, R.id.nav_present, R.id.nav_absent
             ), drawerLayout
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
