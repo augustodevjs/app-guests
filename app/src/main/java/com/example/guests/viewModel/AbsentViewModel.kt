@@ -1,4 +1,4 @@
-package com.example.guests.ui
+package com.example.guests.viewModel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 class AbsentViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is slideshow Fragment"
+        value = "Esse é o fragment de Ausentes"
     }
     val text: LiveData<String> = _text
 }
