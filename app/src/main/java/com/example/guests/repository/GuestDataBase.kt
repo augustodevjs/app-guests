@@ -3,6 +3,7 @@ package com.example.guests.repository
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import com.example.guests.constants.DataBaseConstants
 
 class GuestDataBase(context: Context) : SQLiteOpenHelper(context, NAME, null, VERSION) {
     companion object {
@@ -11,7 +12,12 @@ class GuestDataBase(context: Context) : SQLiteOpenHelper(context, NAME, null, VE
     }
 
     override fun onCreate(db: SQLiteDatabase) {
-        db.execSQL("CREATE TABLE Guest(id integer primary key autoincrement, name text, presence integer);")
+        db.execSQL(
+            "CREATE TABLE ${DataBaseConstants.GUEST.TABLE_NAME}(" +
+                    "${DataBaseConstants.GUEST.COLUMN.ID} integer primary key autoincrement, " +
+                    "${DataBaseConstants.GUEST.COLUMN.NAME} text, " +
+                    "${DataBaseConstants.GUEST.COLUMN.PRESENCE} integer);"
+        )
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {

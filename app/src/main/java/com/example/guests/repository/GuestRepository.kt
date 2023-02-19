@@ -2,6 +2,7 @@ package com.example.guests.repository
 
 import android.content.ContentValues
 import android.content.Context
+import com.example.guests.constants.DataBaseConstants
 import com.example.guests.model.GuestModel
 
 class GuestRepository private constructor(context: Context) {
@@ -17,16 +18,20 @@ class GuestRepository private constructor(context: Context) {
         }
     }
 
-    fun insert(guest: GuestModel) {
-        val db = guestDataBase.writableDatabase
+    fun insert(guest: GuestModel): Boolean {
+        return try {
+            val db = guestDataBase.writableDatabase
 
-        val presence = if (guest.presence) 1 else 0
+            val presence = if (guest.presence) 1 else 0
 
-        val values = ContentValues()
-        values.put("presence", presence)
-        values.put("name", guest.name)
+            val values = ContentValues()
+            values.put(DataBaseConstants.GUEST.COLUMN.PRESENCE, presence)
+            values.put(DataBaseConstants.GUEST.COLUMN.NAME, guest.name)
 
-        db.insert("Guest", null, values)
+            db.insert(DataBaseConstants.GUEST.TABLE_NAME, null, values)
+            true
+        } catch (e: Exception) {
+            false
+        }
     }
-
 }
