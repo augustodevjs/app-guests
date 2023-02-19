@@ -9,15 +9,16 @@ class GuestDataBase(context: Context) : SQLiteOpenHelper(context, NAME, null, VE
     companion object {
         private const val NAME = "guestdb"
         private const val VERSION = 1
+
+        private const val CREATE_TABLE_GUEST =
+            ("create table " + DataBaseConstants.GUEST.TABLE_NAME + " ("
+                    + DataBaseConstants.GUEST.COLUMNS.ID + " integer primary key autoincrement, "
+                    + DataBaseConstants.GUEST.COLUMNS.NAME + " text, "
+                    + DataBaseConstants.GUEST.COLUMNS.PRESENCE + " integer);")
     }
 
     override fun onCreate(db: SQLiteDatabase) {
-        db.execSQL(
-            "CREATE TABLE ${DataBaseConstants.GUEST.TABLE_NAME}(" +
-                    "${DataBaseConstants.GUEST.COLUMN.ID} integer primary key autoincrement, " +
-                    "${DataBaseConstants.GUEST.COLUMN.NAME} text, " +
-                    "${DataBaseConstants.GUEST.COLUMN.PRESENCE} integer);"
-        )
+        db.execSQL(CREATE_TABLE_GUEST)
     }
 
     override fun onUpgrade(db: SQLiteDatabase, oldVersion: Int, newVersion: Int) {
