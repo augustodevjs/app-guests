@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
+import com.example.guests.GuestModel
 import com.example.guests.R
 import com.example.guests.databinding.ActivityGuestFormBinding
 import com.example.guests.viewModel.GuestFormViewModel
